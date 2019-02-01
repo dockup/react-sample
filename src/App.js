@@ -39,19 +39,27 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container mt-5">
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">URL (type /api)</label>
-          <input
-            onChange={e => this.onChange(e)}
-            type="text"
-            className="form-control"
-            id="url"
-            placeholder="URL"
-          />
-        </div>
+      <div className="container mt-5" style={{width: '50%'}}>
+        <h2> Dockup Demo (github-branch: master)</h2>
+        <hr />
+        <p>
+          This stack has got 3 components (containers).
+          <ul>
+            <li>Frontend written in React.</li>
+            <li>Backend written in Django</li>
+            <li>Backend talks to Postgres</li>
+          </ul>
+        </p>
+        <br />
+        <p>
+          Everytime we deploy, Dockup spins up 3 containers for all the
+          3 components, wires them together and sends url to slack channel.
+          Users can click on that link and start testing. Deployment
+          process can be automated whenever user opens a PR in frontend
+          or backend
+        </p>
         <button className="btn btn-primary" onClick={e => this.getText(e)}>
-          Display random response by 'GET'ing this url
+          Get random data from backend
         </button>
         <br />
         <p>{this.state.text}</p>
