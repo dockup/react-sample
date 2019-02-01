@@ -29,8 +29,7 @@ class App extends Component {
       .get(this.state.url)
       .then(response => {
         // handle success
-        console.log(response.status);
-        this.changeText(response.status);
+        this.changeText(response.data);
       })
       .catch(function(error) {
         // handle error
@@ -42,7 +41,7 @@ class App extends Component {
     return (
       <div className="container mt-5">
         <div className="form-group">
-          <label htmlFor="exampleInputPassword1">URL</label>
+          <label htmlFor="exampleInputPassword1">URL (type /api)</label>
           <input
             onChange={e => this.onChange(e)}
             type="text"
@@ -52,8 +51,9 @@ class App extends Component {
           />
         </div>
         <button className="btn btn-primary" onClick={e => this.getText(e)}>
-          Display status
+          Display random response by 'GET'ing this url
         </button>
+        <br />
         <p>{this.state.text}</p>
       </div>
     );
