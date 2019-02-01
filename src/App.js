@@ -41,7 +41,7 @@ class App extends Component {
     return (
       <div className="container mt-5"
         style={{width: '50%', backgroundColor: '#ddd', padding: '10px'}}>
-        <h2> Dockup Demo (github-branch: feature-color</h2>
+        <h2> Dockup Demo (github-branch: feature-color)</h2>
         <hr />
         <p>
           This stack has got 3 components (containers).
