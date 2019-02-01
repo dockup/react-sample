@@ -29,7 +29,7 @@ class App extends Component {
       .get("/api")
       .then(response => {
         // handle success
-        this.changeText(response.data);
+        this.changeText(response.data.string);
       })
       .catch(function(error) {
         // handle error
