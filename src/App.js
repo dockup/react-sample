@@ -26,7 +26,7 @@ class App extends Component {
   getText(e) {
     e.preventDefault();
     axios
-      .get(this.state.url)
+      .get("/api")
       .then(response => {
         // handle success
         this.changeText(response.data);
