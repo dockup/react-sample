@@ -39,8 +39,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container mt-5" style={{width: '50%'}}>
-        <h2> Dockup Demo (github-branch: master)</h2>
+      <div className="container mt-5"
+        style={{width: '50%', backgroundColor: '#ddd', padding: '10px'}}>
+        <h2> Dockup Demo (github-branch: feature-color</h2>
         <hr />
         <p>
           This stack has got 3 components (containers).
