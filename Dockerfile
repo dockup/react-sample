@@ -19,4 +19,7 @@ RUN ls -al build
 FROM nginx:1.15.0-alpine
 
 COPY --from=build /app/build /usr/share/nginx/html
-CMD ["nginx", "-g", "daemon off;"]
+COPY --from=build /app/nginx /nginx
+
+
+CMD /nginx/run-nginx

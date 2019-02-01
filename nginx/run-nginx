@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+set -x
+
+API_IP=`nslookup ${API_SERVICE} 2>&1 | grep Address | cut -d' ' -f3`
+
+sed -e "s api_ip $API_IP g" /nginx/sample.conf > /etc/nginx/conf.d/sample.conf
+
+nginx -g "daemon off;"
