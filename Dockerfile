@@ -21,5 +21,4 @@ FROM nginx:1.15.0-alpine
 COPY --from=build /app/build /usr/share/nginx/html
 COPY --from=build /app/nginx /nginx
 
-
 CMD /nginx/run-nginx
