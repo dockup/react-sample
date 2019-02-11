@@ -1,6 +1,6 @@
 # ================================================================================
 # Compile files first
-FROM node:8.6.0 AS build
+FROM node:8.6.3 AS build
 
 RUN mkdir /app
 WORKDIR /app
