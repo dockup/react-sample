@@ -16,7 +16,7 @@ RUN ls -al build
 # ================================================================================
 # Add files to nginx alpine
 
-FROM nginx:1.15.0-alpine
+FROM nginx:1.15.1-alpine
 
 COPY --from=build /app/build /usr/share/nginx/html
 COPY --from=build /app/nginx /nginx
