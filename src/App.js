@@ -40,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <div className="container mt-5" style={{width: '50%'}}>
-        <h2> Dockup Demo (github-branch: master)</h2>
+        <h2> Dockup Demo (github-branch: furqan-demo)</h2>
         <hr />
         <p>
           This stack has got 3 components (containers).
