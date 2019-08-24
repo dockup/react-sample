@@ -5,14 +5,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: "",
+      quote: [],
       url: ""
     };
   }
 
-  changeText(text) {
+  changeText(quote) {
     this.setState({
-      text
+      quote
     });
   }
 
@@ -29,7 +29,7 @@ class App extends Component {
       .get("/api")
       .then(response => {
         // handle success
-        this.changeText(response.data.string);
+        this.changeText(response.data.quote);
       })
       .catch(function(error) {
         // handle error
@@ -51,18 +51,15 @@ class App extends Component {
           </ul>
         </p>
         <br />
-        <p>
-          Everytime we deploy, Dockup spins up 3 containers for all the
-          3 components, wires them together and sends url to slack channel.
-          Users can click on that link and start testing. Deployment
-          process can be automated whenever user opens a PR in frontend
-          or backend
-        </p>
         <button className="btn btn-primary" onClick={e => this.getText(e)}>
-          Get random data from backend
+          Get random Quote
         </button>
         <br />
-        <p>{this.state.text}</p>
+          {Boolean(this.state.quote.length) &&
+            <blockquote class="blockquote mt-5">
+            <p class="mb-0">{this.state.quote[0]}</p>
+            <footer class="blockquote-footer"><cite title={this.state.quote[1]}>{this.state.quote[1]}</cite></footer>
+          </blockquote>}
       </div>
     );
   }
