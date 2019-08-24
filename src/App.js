@@ -6,14 +6,15 @@ class App extends Component {
     super(props);
     this.state = {
       quote: [],
-      url: ""
+      url: "",
+      isLoading: false,
     };
   }
 
   changeText(quote) {
     this.setState({
-      quote
-    });
+      quote,
+    }, this.setLoading());
   }
 
   onChange(e) {
@@ -23,21 +24,29 @@ class App extends Component {
     });
   }
 
+  setLoading(){
+    this.setState({isLoading: !this.state.isLoading})
+  }
+
   getText(e) {
     e.preventDefault();
-    axios
-      .get("/api")
-      .then(response => {
-        // handle success
-        this.changeText(response.data.quote);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      });
+    this.setState({isLoading: true}, () => {
+      axios
+        .get("/api")
+        .then(response => {
+          // handle success
+          this.changeText(response.data.quote);
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+          this.setLoading()
+        });
+    })
   }
 
   render() {
+    const { isLoading, quote } = this.state;
     return (
       <div className="container mt-5" style={{width: '50%'}}>
         <h2> Dockup Demo (github-branch: master)</h2>
@@ -55,11 +64,17 @@ class App extends Component {
           Get random Quote
         </button>
         <br />
-          {Boolean(this.state.quote.length) &&
+          {Boolean(quote.length) && !isLoading &&
             <blockquote class="blockquote mt-5">
-            <p class="mb-0">{this.state.quote[0]}</p>
-            <footer class="blockquote-footer"><cite title={this.state.quote[1]}>{this.state.quote[1]}</cite></footer>
+            <p class="mb-0">{quote[0]}</p>
+            <footer class="blockquote-footer"><cite title={quote[1]}>{quote[1]}</cite></footer>
           </blockquote>}
+
+          {isLoading &&
+            <div className="mt-5 spinner-border" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          }
       </div>
     );
   }
