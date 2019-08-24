@@ -64,7 +64,7 @@ class App extends Component {
           Get random Quote
         </button>
         <br />
-          {Boolean(quote.length) &&
+          {Boolean(quote.length) && !isLoading &&
             <blockquote class="blockquote mt-5">
             <p class="mb-0">{quote[0]}</p>
             <footer class="blockquote-footer"><cite title={quote[1]}>{quote[1]}</cite></footer>
